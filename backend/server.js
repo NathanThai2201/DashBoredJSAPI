@@ -3,6 +3,7 @@ import cors from 'cors';
 import { connectDB } from "./config/db.js";
 import dotenv from 'dotenv';
 import postRoutes from "./routes/post.route.js";
+import userRoutes from "./routes/user.route.js";
 import typingtextRoutes from "./routes/typingtext.route.js";
 import path from 'path';
 
@@ -23,6 +24,7 @@ app.use(cors({ origin: ['http://localhost:5173',
 
 app.use("/api/posts",postRoutes);
 app.use("/api/typingtexts",typingtextRoutes);
+app.use("/api/users",userRoutes);
 
 app.listen(PORT, () => {
     connectDB();
