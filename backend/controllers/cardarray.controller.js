@@ -2,7 +2,7 @@ import CardArray from '../models/cardarray.model.js';
 import mongoose from 'mongoose';
 
 export const getCardArrays = async (req, res) => {
-    const { uid } = req.query;
+    const { uid } = req.params;
     try {
         let cardarrays;
         if (uid) {
