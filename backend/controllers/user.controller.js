@@ -38,14 +38,14 @@ export const createUser = async (req, res) => {
 
 export const updateUser = async (req, res) => {
     const { id } = req.params;
-    let { username, password, cardArray } = req.body;
+    let { username, password } = req.body;
 
     if (!mongoose.Types.ObjectId.isValid(id)) {
         return res.status(400).json({ success: false, message: "Invalid User Id" });
     }
 
     try {
-        let updateFields = { username, cardArray };
+        let updateFields = { username};
 
         if (password) {
             updateFields.password = await bcrypt.hash(password, 10);

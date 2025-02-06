@@ -14,11 +14,7 @@ const userSchema = new mongoose.Schema({
     password: {
         type:String,
         required: true
-    },
-    cardArray: {
-        type: [CardSchema],
-         default: []
-    },
+    }
 });
 
 const User = mongoose.model('User', userSchema);
