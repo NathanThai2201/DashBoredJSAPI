@@ -29,23 +29,25 @@ router.post('/signup', async (req, res) => {
     if (!username || !password) {
         return res.status(400).json({ success: false, message: "Missing fields" });
     }
-
     try {
         const existingUser = await User.findOne({ username });
         if (existingUser) {
             return res.status(400).json({ success: false, message: "Username already taken" });
         }
-
         const hashedPassword = await bcrypt.hash(password, 10);
         const newUser = new User({ username, password: hashedPassword });
-
         await newUser.save();
-        res.status(201).json({ success: true, message: "User created" });
+        res.status(201).json({
+            success: true,
+            message: "User created",
+            user: { id: newUser._id, username: newUser.username }
+        });
     } catch (error) {
         console.error("Signup error:", error);
         res.status(500).json({ success: false, message: "Server error" });
     }
 });
+
 //login
 router.post('/login', async (req, res) => {
     const { username, password } = req.body;
