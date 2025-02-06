@@ -13,7 +13,6 @@ const PORT = process.env.PORT || 5000
 
 const __dirname = path.resolve();
 app.use(express.json()); // allow JSON data in req.body
-
 app.use(cors({ origin: ['http://localhost:5173',
         'https://nathanthai2201.github.io/portfolio/',
         'http://nathan-thai.com',
