@@ -1,5 +1,5 @@
 import express from "express";
-import { deleteCardArray, updateCardArray, createCardArray, getCardArrays } from '../controllers/cardarray.controller.js';
+import { deleteCardArray, updateCardArray, createCardArray, getCardArrays, getCardArray } from '../controllers/cardarray.controller.js';
 
 const router = express.Router();
 
