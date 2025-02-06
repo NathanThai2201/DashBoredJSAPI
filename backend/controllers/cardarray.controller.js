@@ -1,15 +1,25 @@
 import CardArray from '../models/cardarray.model.js';
 import mongoose from 'mongoose';
 
-export const getCardArrays = async (req,res) => {
+export const getCardArrays = async (req, res) => {
+    const { uid } = req.query;
     try {
-        const cardarrays = await CardArray.find({});
-        res.status(200).json({ success:true, data: cardarrays });
+        let cardarrays;
+        if (uid) {
+            cardarrays = await CardArray.findOne({ uid });
+            if (!cardarrays) {
+                return res.status(404).json({ success: false, message: "Card array not found" });
+            }
+        } else {
+            cardarrays = await CardArray.find({});
+        }
+        res.status(200).json({ success: true, data: cardarrays });
     } catch (error) {
-        console.log("error in fetching card arrays", error.message)
-        res.status(500).json({ success: false, message: "Server Error"});
+        console.log("Error in fetching card arrays", error.message);
+        res.status(500).json({ success: false, message: "Server Error" });
     }
-}
+};
+
 export const createCardArray = async (req,res) => {
     const cardarray = req.body;
 
