@@ -7,7 +7,7 @@ const router = express.Router();
 //  ENDPOINTS
 //
 router.get("/", getCardArrays);
-// router.get("/:id", getCardArray);
+router.get("/:uid", getCardArray);
 router.post("/", createCardArray);
 router.put("/:id", updateCardArray);
 router.delete("/:id", deleteCardArray);
