@@ -16,7 +16,6 @@ const __dirname = path.resolve();
 app.use(express.json()); // allow JSON data in req.body
 //'http://localhost:5173',
 app.use(cors({ origin: [
-    'http://localhost:5173',
         'https://nathanthai2201.github.io/portfolio/',
         'http://nathan-thai.com',
         'https://nathan-thai.com'],
